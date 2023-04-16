@@ -22,7 +22,6 @@ const Zx9 = ({ addItem }) => {
 
 
     const handleQuantity = (p) => {
-
         if (p === '-') {
             if (quantity === 0) return
             setQuantity((prevState) => prevState - 1)
