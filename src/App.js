@@ -18,7 +18,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import Home from './pages/Home/Home'
 import Headphones from './pages/Headphones/Headphones';
 import Speakers from './pages/Speakers/Speakers';
-import Earphones from './pages/Earphones.sass/Earphones';
+import Earphones from './pages/Earphones/Earphones';
 import Xx99mark2 from './pages/xx99mark2/Xx99mark2';
 import Xx99mark1 from './pages/xx99mark1/Xx99mark1';
 import Xx59 from './pages/xx59/Xx59';
