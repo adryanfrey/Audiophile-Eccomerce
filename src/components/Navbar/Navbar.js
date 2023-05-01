@@ -17,79 +17,24 @@ import { useState, useEffect } from 'react'
 
 const Navbar = ({ displayCart }) => {
   // states
-  const [expand, setExpand] = useState(false)
+  const [navMobile, setNavMobile] = useState(false)
   const [windowWidth, setWindowWidth] = useState(window.innerWidth)
 
   const navigate = useNavigate('')
 
   // navigation
-  const handleClick = (page) => {
-    setExpand(false)
+  const handleNavigation = (page) => {
+    setNavMobile(false)
     navigate(page)
     window.scrollTo(0, 0)
   }
 
-  // expand navbar
-  const expandNavbar = () => {
-    if (expand === false) {
-      setExpand(true)
+  // handle the mobile navbar view
+  const handleMobileNavbar = () => {
+    if (navMobile) {
+      setNavMobile(false)
     } else {
-      setExpand(false)
-    }
-  }
-
-  useEffect(() => {
-    const navbar = document.querySelector('.navbar-tablet')
-    const filterNavbar = document.querySelector('.filter-navbar')
-
-    if (expand === true) {
-      navbar.style.display = 'flex'
-      filterNavbar.style.display = 'block'
-    } else {
-      navbar.style.display = 'none'
-      filterNavbar.style.display = 'none'
-    }
-
-  },[expand])
-
-  // colapse navbar if window size > 1100px
-  useEffect(() => {
-    const handleResizeWindow = () => setWindowWidth(window.innerWidth)
-
-    window.addEventListener('resize', handleResizeWindow)
-    
-    return () => {
-      window.removeEventListener('resize', handleResizeWindow)
-    }
-  },[])
-
-  if(windowWidth > 1150) {
-    const navbar = document.querySelector('.navbar-tablet')
-    const filterNavbar = document.querySelector('.filter-navbar') 
-   
-    if (navbar === null || filterNavbar === null) {
-    } else {
-      navbar.style.display = 'none'
-      filterNavbar.style.display = 'none'
-    }
-
-  }
-
-// back button on mobile navbar
-
-  if(windowWidth > 650) {
-    const back = document.querySelector('.back-navbar')
-    if (back === null) {
-    } else {
-      back.style.display = 'none'
-    }
-  }
-
-  if(windowWidth < 651) {
-    const back = document.querySelector('.back-navbar')
-    if (back === null) {
-    } else {
-      back.style.display = 'block'
+      setNavMobile(true)
     }
   }
 
@@ -98,7 +43,7 @@ const Navbar = ({ displayCart }) => {
       <div className='header-container'>
 
         <div className="logo-container">
-          <i onClick={expandNavbar} className="fa-solid fa-bars burguer"></i>
+          <i onClick={handleMobileNavbar} className="fa-solid fa-bars burguer"></i>
           <h4>audiophile</h4>
         </div>
         <div className='navbar-container'>
@@ -111,39 +56,44 @@ const Navbar = ({ displayCart }) => {
             </ul>
           </nav>
         </div>
-        <div onClick={() => displayCart()} className='icon-container'>
+        <div onClick={displayCart} className='icon-container'>
           <i className="fa-solid fa-cart-shopping"></i>
         </div>
       </div>
 
-      <div className='navbar-tablet'>
-        <div onClick={() => handleClick('headphones')} className='card1-container'>
-          <img src={img7} alt="" />
-          <div className='box-shadow'></div>
-          <h6>headphones</h6>
-          <button className='btn-3' >SHOP <img src={chevron} alt="chevron" /></button>
-        </div>
+      {navMobile &&
+        <>
+          <div className='navbar-tablet'>
+            <div onClick={() => handleNavigation('headphones')} className='card1-container'>
+              <img src={img7} alt="" />
+              <div className='box-shadow'></div>
+              <h6>headphones</h6>
+              <button className='btn-3' >SHOP <img src={chevron} alt="chevron" /></button>
+            </div>
 
-        <div onClick={() => handleClick('speakers')} className='card1-container'>
-          <img src={img5} alt="" />
-          <div className='box-shadow'></div>
-          <h6>speakers</h6>
-          <button className='btn-3'>SHOP <img src={chevron} alt="chevron" />  </button>
-        </div>
+            <div onClick={() => handleNavigation('speakers')} className='card1-container'>
+              <img src={img5} alt="" />
+              <div className='box-shadow'></div>
+              <h6>speakers</h6>
+              <button className='btn-3'>SHOP <img src={chevron} alt="chevron" />  </button>
+            </div>
 
-        <div onClick={() => handleClick('earphones')} className='card1-container'>
-          <img src={img6} alt="" />
-          <div className='box-shadow'></div>
-          <h6>earphones</h6>
-          <button className='btn-3'>SHOP <img src={chevron} alt="chevron" /> </button>
-        </div>
+            <div onClick={() => handleNavigation('earphones')} className='card1-container'>
+              <img src={img6} alt="" />
+              <div className='box-shadow'></div>
+              <h6>earphones</h6>
+              <button className='btn-3'>SHOP <img src={chevron} alt="chevron" /> </button>
+            </div>
 
-        <div onClick={() => setExpand(false)} className='back-navbar'>
-          Back
-        </div>
-      </div>
+            <div onClick={() => setNavMobile(false)} className='back-navbar'>
+              Back
+            </div>
+          </div>
 
-      <div className='filter-navbar'></div>
+          <div className='filter-navbar'></div>
+        </>
+      }
+
 
     </header>
   )

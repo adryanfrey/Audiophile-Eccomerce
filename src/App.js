@@ -146,14 +146,10 @@ function App() {
   useEffect(() => {
     const cart = document.querySelector('.cart-container')
     const filter = document.querySelector('.filter')
-    const navbar = document.querySelector('.navbar-tablet')
-    const filterNavbar = document.querySelector('.filter-navbar')
 
     if (cartDisplay === true) {
       cart.style.display = 'block'
       filter.style.display = 'block'
-      navbar.style.display = 'none'
-      filterNavbar.style.display = 'none'
 
     } else {
       cart.style.display = 'none'
