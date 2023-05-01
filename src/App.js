@@ -1,5 +1,5 @@
 // hooks
-import { HashRouter , Routes, Route, Link } from 'react-router-dom'
+import { HashRouter, Routes, Route, Link } from 'react-router-dom'
 import { useState, useEffect } from 'react';
 
 // components
@@ -106,13 +106,12 @@ function App() {
       toast.success('Item added to the cart')
     } else {
       setItems(items.map((item) => {
-        return {...item, quantity: item.quantity + product.quantity}
+        return { ...item, quantity: item.quantity + product.quantity }
       }))
       toast.success('Item added to the cart')
     }
-    
-  }
 
+  }
 
   // remove all items from the cart
   const removeAll = () => {
@@ -142,21 +141,6 @@ function App() {
     }
   }
 
-  // display the cart
-  useEffect(() => {
-    const cart = document.querySelector('.cart-container')
-    const filter = document.querySelector('.filter')
-
-    if (cartDisplay === true) {
-      cart.style.display = 'block'
-      filter.style.display = 'block'
-
-    } else {
-      cart.style.display = 'none'
-      filter.style.display = 'none'
-    }
-  }, [cartDisplay])
-
   const displayCart = () => {
     if (cartDisplay === false) {
       setCartDisplay(true)
@@ -166,14 +150,8 @@ function App() {
   }
 
   const handleCartClick = () => {
-    window.scrollTo(0,0)
-
-    if (window.pageYOffset < 400) {
-      displayCart()
-    } else {
-      setTimeout(displayCart, 700)
-    }
-
+    window.scrollTo(0, 0)
+    displayCart()
   }
 
   return (
@@ -182,46 +160,51 @@ function App() {
         <div className='cart-button' onClick={() => handleCartClick()}>
           <i className="fa-solid fa-cart-shopping"></i>
         </div>
-        <div className='cart-container'>
-          <div className="title">
-            <p>Cart ({items.length})</p>
-            <p className='gray-text' onClick={() => removeAll()}>Remove all</p>
-          </div>
-          {items.map((item) => {
-            return (
-              <div className='cart-item-container' key={item.price}>
-                <img src={imgRendering(item.name)} alt="" />
-                <div className='cart-items-price'>
-                  <p className='name'>{item.name}</p>
-                  <p className='price'>$ {item.price}</p>
-                </div>
-                <div className='cart-items-quantity'>
-                  <p onClick={() => handleItemQuantity({ name: item.name, type: '-' })} className='quantityManagement'>-</p>
-                  <p>{item.quantity}</p>
-                  <p onClick={() => handleItemQuantity({ name: item.name, type: '+' })} className='quantityManagement'>+</p>
-                </div>
+        {cartDisplay &&
+          <>
+            <div className='cart-container'>
+              <div className="title">
+                <p>Cart ({items.length})</p>
+                <p className='gray-text' onClick={() => removeAll()}>Remove all</p>
               </div>
-            )
-          })
-          }
-          {items.length === 0 ? (
-            <div>
-              <p>Looks like you havent add any item to the cart yet :( </p>
-              <p onClick={displayCart} className='back'>Back</p>
+              {items.map((item) => {
+                return (
+                  <div className='cart-item-container' key={item.price}>
+                    <img src={imgRendering(item.name)} alt="" />
+                    <div className='cart-items-price'>
+                      <p className='name'>{item.name}</p>
+                      <p className='price'>$ {item.price}</p>
+                    </div>
+                    <div className='cart-items-quantity'>
+                      <p onClick={() => handleItemQuantity({ name: item.name, type: '-' })} className='quantityManagement'>-</p>
+                      <p>{item.quantity}</p>
+                      <p onClick={() => handleItemQuantity({ name: item.name, type: '+' })} className='quantityManagement'>+</p>
+                    </div>
+                  </div>
+                )
+              })
+              }
+              {items.length === 0 ? (
+                <div>
+                  <p>Looks like you havent add any item to the cart yet :( </p>
+                  <p onClick={displayCart} className='back'>Back</p>
+                </div>
+              ) : (
+                <div>
+                  <div className='cart-total'>
+                    <p className='text'>total</p>
+                    <p className='total-price'>$ {totalPrice}</p>
+                  </div>
+                  <button onClick={displayCart} className='btn-1'><Link to='/checkout'>Checkout</Link></button>
+                  <p onClick={displayCart} className='back'>Back</p>
+                </div>
+              )}
             </div>
-          ) : (
-            <div>
-              <div className='cart-total'>
-                <p className='text'>total</p>
-                <p className='total-price'>$ {totalPrice}</p>
-              </div>
-              <button onClick={displayCart} className='btn-1'><Link to='/checkout'>Checkout</Link></button>
-              <p onClick={displayCart} className='back'>Back</p>
-            </div>
-          )}
-        </div>
+            <div className='filter'></div>
+          </>
+        }
         <Navbar displayCart={displayCart} />
-        <div className='filter'></div>
+        
         <ToastContainer autoClose={2000} />
         <Routes>
           <Route path='/' element={<Home />} />
