@@ -10,12 +10,14 @@ import img8 from '../../assets/home/desktop/image-removebg-preview(38).png'
 import img9 from '../../assets/home/desktop/earphones.png'
 import chevron from '../../assets/home/desktop/chevron.png'
 
-
 // hooks
 import { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 
-const Zx9 = ({ addItem }) => {
+// store
+import store from '../../store/index'
+
+const Zx9 = () => {
 
     // states
     const [quantity, setQuantity] = useState(0)
@@ -38,10 +40,10 @@ const Zx9 = ({ addItem }) => {
         window.scrollTo(0, 0)
     }
 
-    // add item to the cart
-    const handleCart = (product) => {
-        addItem(product)
-        setQuantity(0)
+     // add item to the cart
+     const addItem = () => {
+        const product = { name: 'ZX9 SPEAKER', price: 4500, quantity: quantity }
+        store.items.push(product)
     }
 
     return (
@@ -67,7 +69,7 @@ const Zx9 = ({ addItem }) => {
                             <p className='body number'>{quantity}</p>
                             <p className='body symbols' onClick={() => handleQuantity('+')}>+</p>
                         </div>
-                        <button onClick={() => handleCart({ name: 'ZX9 SPEAKER', price: 4500, quantity: quantity })} className='btn-1'>add to cart</button>
+                        <button onClick={addItem} className='btn-1'>add to cart</button>
                     </div>
                 </div>
             </section>

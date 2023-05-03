@@ -194,3 +194,24 @@
 
         @include mixins.tablet
             display: block
+
+.cart-button
+    position: fixed
+    bottom: 3vw
+    right: 3vw
+    width: 70px
+    height: 70px
+    display: flex
+    align-items: center
+    justify-content: center
+    background-color: #878787
+    border-radius: 70px
+    color: #fff
+    cursor: pointer
+    transition: .4s
+    z-index: 100
+    &:active
+        transform: scale(0.9)
+@media (hover:hover)
+    .cart-button:hover
+        transform: scale(1.1)

@@ -4,6 +4,7 @@ import './navbar.sass'
 // hooks
 import { Link } from 'react-router-dom'
 import { useNavigate } from 'react-router-dom'
+import { useState } from 'react'
 
 // assets
 import img5 from '../../assets/home/desktop/image-removebg-preview(38).png'
@@ -11,14 +12,18 @@ import img6 from '../../assets/home/desktop/earphones.png'
 import img7 from '../../assets/home/desktop/image-removebg-preview(41).png'
 import chevron from '../../assets/home/desktop/chevron.png'
 
-// hooks
-import { useState, useEffect } from 'react'
+// components
+import Cart from '../Cart/Cart'
 
+// store
+import store from '../../store'
+import { useSnapshot } from 'valtio'
 
-const Navbar = ({ displayCart }) => {
+const Navbar = () => {
   // states
   const [navMobile, setNavMobile] = useState(false)
-  const [windowWidth, setWindowWidth] = useState(window.innerWidth)
+  const [cartDisplay, setCartDisplay] = useState(false)
+  const snap = useSnapshot(store)
 
   const navigate = useNavigate('')
 
@@ -35,6 +40,23 @@ const Navbar = ({ displayCart }) => {
       setNavMobile(false)
     } else {
       setNavMobile(true)
+    }
+  }
+
+
+  // handle cart icon on click
+  const handleCartClick = () => {
+    window.scrollTo(0, 0)
+    displayCart()
+  }
+
+
+  // handle cart view
+  const displayCart = () => {
+    if (cartDisplay === false) {
+      setCartDisplay(true)
+    } else {
+      setCartDisplay(false)
     }
   }
 
@@ -94,6 +116,15 @@ const Navbar = ({ displayCart }) => {
         </>
       }
 
+      {cartDisplay &&
+        <Cart closeCart={() => setCartDisplay(false)} />
+      }
+
+      {snap.items.length > 0 &&
+        <div className='cart-button' onClick={() => handleCartClick()}>
+          <i className="fa-solid fa-cart-shopping"></i>
+        </div>
+      }
 
     </header>
   )

@@ -14,7 +14,10 @@ import chevron from '../../assets/home/desktop/chevron.png'
 import { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 
-const Xx99mark2 = ({addItem}) => {
+// store
+import store from '../../store/index'
+
+const Xx99mark2 = () => {
     // states
     const [quantity, setQuantity] = useState(0)
 
@@ -37,10 +40,10 @@ const Xx99mark2 = ({addItem}) => {
     }
 
     // add item to the cart
-    const handleCart = (product) => {
-        addItem(product)
-        setQuantity(0)
-    }   
+    const addItem = () => {
+        const product = { name: 'XX99 MARK II', price: 2999, quantity: quantity }
+        store.items.push(product)
+    }
     
     return (
         <div className='xx99mark2'>
@@ -65,7 +68,7 @@ const Xx99mark2 = ({addItem}) => {
                             <p className='body number'>{quantity}</p>
                             <p className='body symbols' onClick={() => handleQuantity('+')}>+</p>
                         </div>
-                        <button onClick={() => handleCart({name: 'XX99 MARK II', price: 2999, quantity: quantity})} className='btn-1'>add to cart</button>
+                        <button onClick={addItem} className='btn-1'>add to cart</button>
                     </div>
                 </div>
             </section>

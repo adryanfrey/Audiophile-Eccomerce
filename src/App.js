@@ -27,140 +27,105 @@ import Zx7 from './pages/zx7/Zx7';
 import Yx1 from './pages/yx1/Yx1';
 import Checkout from './pages/checkout/Checkout';
 
-// assets
-import xx99mark2 from './assets/Group15.png'
-import xx99mark1 from './assets/Group3.png'
-import zx9 from './assets/Group5.png'
-import zx7 from './assets/Group8.png'
-import xx59 from './assets/Group2.png'
-import yx1 from './assets/Group7.png'
 
 
 function App() {
-  // states
-  const [items, setItems] = useState([])
-  const [totalPrice, setTotalPrice] = useState(null)
-  const [cartDisplay, setCartDisplay] = useState(false)
 
-  // calc the total price of the cart
-  useEffect(() => {
-    setTotalPrice(null)
+  // // calc the total price of the cart
+  // useEffect(() => {
+  //   setTotalPrice(null)
 
-    items.map((item) => {
-      let price = item.price
-      let quantity = item.quantity
-      let total = price * quantity
+  //   items.map((item) => {
+  //     let price = item.price
+  //     let quantity = item.quantity
+  //     let total = price * quantity
 
-      setTotalPrice(prevState => prevState + total)
+  //     setTotalPrice(prevState => prevState + total)
 
-      // remove item when quantity = 0
-      if (item.quantity === 0) {
-        setItems(items.filter(i => i.name !== item.name))
-      }
-    })
+  //     // remove item when quantity = 0
+  //     if (item.quantity === 0) {
+  //       setItems(items.filter(i => i.name !== item.name))
+  //     }
+  //   })
 
-    if (items.length > 0) {
-      const cartButton = document.querySelector('.cart-button')
-      cartButton.style.display = 'flex'
-    } else {
-      const cartButton = document.querySelector('.cart-button')
-      cartButton.style.display = 'none'
-    }
-  }, [items])
+  //   if (items.length > 0) {
+  //     const cartButton = document.querySelector('.cart-button')
+  //     cartButton.style.display = 'flex'
+  //   } else {
+  //     const cartButton = document.querySelector('.cart-button')
+  //     cartButton.style.display = 'none'
+  //   }
+  // }, [items])
 
 
-  // change the quantity of the items in the cart
-  const handleItemQuantity = (p) => {
-    if (p.type === '-') {
-      setItems(items.map(item => {
-        if (item.name === p.name) {
-          return { ...item, quantity: item.quantity - 1 }
-        } else {
-          return item
-        }
-      }))
-      console.log(items)
-    } else {
-      setItems(items.map(item => {
-        if (item.name === p.name) {
-          return { ...item, quantity: item.quantity + 1 }
-        } else {
-          return item
-        }
-      }))
-    }
-  }
+  // // change the quantity of the items in the cart
+  // const handleItemQuantity = (p) => {
+  //   if (p.type === '-') {
+  //     setItems(items.map(item => {
+  //       if (item.name === p.name) {
+  //         return { ...item, quantity: item.quantity - 1 }
+  //       } else {
+  //         return item
+  //       }
+  //     }))
+  //     console.log(items)
+  //   } else {
+  //     setItems(items.map(item => {
+  //       if (item.name === p.name) {
+  //         return { ...item, quantity: item.quantity + 1 }
+  //       } else {
+  //         return item
+  //       }
+  //     }))
+  //   }
+  // }
 
-  // add items to the cart
-  const addItem = (product) => {
+  // // remove all items from the cart
+  // const removeAll = () => {
+  //   setItems([])
+  // }
 
-    if (product.quantity === 0) {
-      toast.warn('Select the quantity you want')
-      return
-    }
+  // // render the image conditionaly
+  // const imgRendering = (src) => {
+  //   switch (src) {
+  //     case 'XX99 MARK II':
+  //       return xx99mark2
 
-    const checkItem = items.find((item) => item.name === product.name)
+  //     case 'XX99 MARK I':
+  //       return xx99mark1
 
-    if (checkItem === undefined) {
-      setItems([...items, product])
-      toast.success('Item added to the cart')
-    } else {
-      setItems(items.map((item) => {
-        return { ...item, quantity: item.quantity + product.quantity }
-      }))
-      toast.success('Item added to the cart')
-    }
+  //     case 'ZX9 SPEAKER':
+  //       return zx9
 
-  }
+  //     case 'ZX7 SPEAKER':
+  //       return zx7
 
-  // remove all items from the cart
-  const removeAll = () => {
-    setItems([])
-  }
+  //     case 'XX59 HEADPHONES':
+  //       return xx59
 
-  // render the image conditionaly
-  const imgRendering = (src) => {
-    switch (src) {
-      case 'XX99 MARK II':
-        return xx99mark2
+  //     case 'YX1':
+  //       return yx1
+  //   }
+  // }
 
-      case 'XX99 MARK I':
-        return xx99mark1
+  // const displayCart = () => {
+  //   if (cartDisplay === false) {
+  //     setCartDisplay(true)
+  //   } else {
+  //     setCartDisplay(false)
+  //   }
+  // }
 
-      case 'ZX9 SPEAKER':
-        return zx9
-
-      case 'ZX7 SPEAKER':
-        return zx7
-
-      case 'XX59 HEADPHONES':
-        return xx59
-
-      case 'YX1':
-        return yx1
-    }
-  }
-
-  const displayCart = () => {
-    if (cartDisplay === false) {
-      setCartDisplay(true)
-    } else {
-      setCartDisplay(false)
-    }
-  }
-
-  const handleCartClick = () => {
-    window.scrollTo(0, 0)
-    displayCart()
-  }
+  // const handleCartClick = () => {
+  //   window.scrollTo(0, 0)
+  //   displayCart()
+  // }
 
   return (
     <div className="App">
       <HashRouter>
-        <div className='cart-button' onClick={() => handleCartClick()}>
-          <i className="fa-solid fa-cart-shopping"></i>
-        </div>
-        {cartDisplay &&
+
+        {/* {cartDisplay &&
           <>
             <div className='cart-container'>
               <div className="title">
@@ -202,8 +167,8 @@ function App() {
             </div>
             <div className='filter'></div>
           </>
-        }
-        <Navbar displayCart={displayCart} />
+        } */}
+        <Navbar />
         
         <ToastContainer autoClose={2000} />
         <Routes>
@@ -211,13 +176,13 @@ function App() {
           <Route path='/headphones' element={<Headphones />} />
           <Route path='speakers' element={<Speakers />} />
           <Route path='earphones' element={<Earphones />} />
-          <Route path='/headphones/id:jbgy342ewgh2' element={<Xx99mark2 addItem={addItem} />} />
-          <Route path='/headphones/id:lkjnuwedsas1' element={<Xx99mark1 addItem={addItem} />} />
-          <Route path='/headphones/id:oiwedhsnas34' element={<Xx59 addItem={addItem} />} />
-          <Route path='/speakers/id:yubdwudasas3' element={<Zx9 addItem={addItem} />} />
-          <Route path='/speakers/id:gusajhdascsa56' element={<Zx7 addItem={addItem} />} />
-          <Route path='/earphones/id:alskdnase324a' element={<Yx1 addItem={addItem} />} />
-          <Route path='/checkout' element={<Checkout totalPrice={totalPrice} items={items} removeAll={removeAll} />} />
+          <Route path='/headphones/id:jbgy342ewgh2' element={<Xx99mark2 />} />
+          <Route path='/headphones/id:lkjnuwedsas1' element={<Xx99mark1 />} />
+          <Route path='/headphones/id:oiwedhsnas34' element={<Xx59 />} />
+          <Route path='/speakers/id:yubdwudasas3' element={<Zx9 />} />
+          <Route path='/speakers/id:gusajhdascsa56' element={<Zx7 />} />
+          <Route path='/earphones/id:alskdnase324a' element={<Yx1 />} />
+          {/* <Route path='/checkout' element={<Checkout totalPrice={totalPrice} items={items} removeAll={removeAll} />} /> */}
         </Routes>
         <Footer />
       </HashRouter>

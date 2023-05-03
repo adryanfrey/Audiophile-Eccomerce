@@ -14,13 +14,14 @@ import chevron from '../../assets/home/desktop/chevron.png'
 import { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 
-const Xx59 = ({ addItem }) => {
+// store
+import store from '../../store/index'
 
+const Xx59 = () => {
     // states
     const [quantity, setQuantity] = useState(0)
 
     const handleQuantity = (p) => {
-
         if (p === '-') {
             if (quantity === 0) return
             setQuantity((prevState) => prevState - 1)
@@ -32,16 +33,15 @@ const Xx59 = ({ addItem }) => {
     // navigation
     const navigate = useNavigate()
 
-    const handleClick = (page) => {
+    const handleNavigation = (page) => {
         navigate(page)
         window.scrollTo(0, 0)
     }
 
-
     // add item to the cart
-    const handleCart = (product) => {
-        addItem(product)
-        setQuantity(0)
+    const addItem = () => {
+        const product = { name: 'XX59 HEADPHONES', price: 899, quantity: quantity}
+        store.items.push(product)
     }
 
     return (
@@ -65,7 +65,7 @@ const Xx59 = ({ addItem }) => {
                             <p className='body number'>{quantity}</p>
                             <p className='body symbols' onClick={() => handleQuantity('+')}>+</p>
                         </div>
-                        <button onClick={() => handleCart({ name: 'XX59 HEADPHONES', price: 899, quantity: quantity })} className='btn-1'>add to cart</button>
+                        <button onClick={addItem} className='btn-1'>add to cart</button>
                     </div>
                 </div>
             </section>
@@ -128,39 +128,39 @@ const Xx59 = ({ addItem }) => {
                     <div className='other-products-card'>
                         <div className="mark2-img"></div>
                         <h4>XX99 MARK II</h4>
-                        <button onClick={() => handleClick('/headphones/id:jbgy342ewgh2')} className='btn-1'>see product</button>
+                        <button onClick={() => handleNavigation('/headphones/id:jbgy342ewgh2')} className='btn-1'>see product</button>
                     </div>
 
                     <div className='other-products-card'>
                         <div className="mark1-img"></div>
                         <h4>XX99 MARK I</h4>
-                        <button onClick={() => handleClick('/headphones/id:lkjnuwedsas1')} className='btn-1'>see product</button>
+                        <button onClick={() => handleNavigation('/headphones/id:lkjnuwedsas1')} className='btn-1'>see product</button>
                     </div>
 
                     <div className='other-products-card'>
                         <div className="zx9-img"></div>
                         <h4>zx9 speaker</h4>
-                        <button onClick={() => handleClick('/speakers/id:yubdwudasas3')} className='btn-1'>see product</button>
+                        <button onClick={() => handleNavigation('/speakers/id:yubdwudasas3')} className='btn-1'>see product</button>
                     </div>
                 </div>
             </section>
 
             <section className='cards-container'>
-                <div onClick={() => handleClick('/headphones')} className='card1-container'>
+                <div onClick={() => handleNavigation('/headphones')} className='card1-container'>
                     <img src={img7} alt="" />
                     <div className='box-shadow'></div>
                     <h6>headphones</h6>
                     <button className='btn-3'>SHOP <img src={chevron} alt="chevron" /> </button>
                 </div>
 
-                <div onClick={() => handleClick('/speakers')} className='card1-container'>
+                <div onClick={() => handleNavigation('/speakers')} className='card1-container'>
                     <img src={img8} alt="" />
                     <div className='box-shadow'></div>
                     <h6>speakers</h6>
                     <button className='btn-3'>SHOP <img src={chevron} alt="chevron" />  </button>
                 </div>
 
-                <div onClick={() => handleClick('/earphones')} className='card1-container'>
+                <div onClick={() => handleNavigation('/earphones')} className='card1-container'>
                     <img src={img9} alt="" />
                     <div className='box-shadow'></div>
                     <h6>earphones</h6>
