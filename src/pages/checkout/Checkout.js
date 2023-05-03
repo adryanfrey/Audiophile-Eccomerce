@@ -43,14 +43,10 @@ const Checkout = () => {
     const [zipcode, setZipcode] = useState('')
     const [city, setCity] = useState('')
     const [country, setCountry] = useState('')
-    const [eMoneyInput, seteMoneyInput] = useState(undefined)
-    const [cashInput, setCashInput] = useState(undefined)
-
     const [error, setError] = useState(false)
+    const [displaySuccess, setDisplaySuccess] = useState(false)
 
     const navigate = useNavigate('')
-
-    const [displaySuccess, setDisplaySuccess] = useState(false)
 
     // render the image conditionaly
     const imgRendering = (src) => {
@@ -83,6 +79,10 @@ const Checkout = () => {
             return
         }
 
+
+        const eMoneyInput = document.querySelector('#e-money')
+        const cashInput = document.querySelector('#cash')
+
         if (eMoneyInput.checked === false && cashInput.checked === false) {
             window.scrollTo(0, 500)
             toast.warn('Select a payment method')
@@ -91,16 +91,6 @@ const Checkout = () => {
         window.scrollTo(0, 0)
         setDisplaySuccess(true)
     }
-
-    // getting the radio inputs reference
-    useEffect(() => {
-        const input1 = document.querySelector('#e-money')
-        const input2 = document.querySelector('#cash')
-
-        seteMoneyInput(input1)
-        setCashInput(input2)
-
-    }, [])
 
     // payment success button 
     const paymentSuccess = () => {
@@ -111,7 +101,7 @@ const Checkout = () => {
 
     }
 
-    // check if items is empty to redirect the user to other page
+    // check if items are empty to redirect the user to other page
     useEffect(() => {
         if (snap.items.length === 0) {
             navigate('/')

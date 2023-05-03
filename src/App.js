@@ -26,8 +26,6 @@ import Zx7 from './pages/zx7/Zx7';
 import Yx1 from './pages/yx1/Yx1';
 import Checkout from './pages/checkout/Checkout';
 
-
-
 function App() {
 
   return (
