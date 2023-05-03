@@ -1,6 +1,5 @@
 // hooks
-import { HashRouter, Routes, Route, Link } from 'react-router-dom'
-import { useState, useEffect } from 'react';
+import { HashRouter, Routes, Route } from 'react-router-dom'
 
 // components
 import Navbar from './components/Navbar/Navbar';
@@ -31,146 +30,13 @@ import Checkout from './pages/checkout/Checkout';
 
 function App() {
 
-  // // calc the total price of the cart
-  // useEffect(() => {
-  //   setTotalPrice(null)
-
-  //   items.map((item) => {
-  //     let price = item.price
-  //     let quantity = item.quantity
-  //     let total = price * quantity
-
-  //     setTotalPrice(prevState => prevState + total)
-
-  //     // remove item when quantity = 0
-  //     if (item.quantity === 0) {
-  //       setItems(items.filter(i => i.name !== item.name))
-  //     }
-  //   })
-
-  //   if (items.length > 0) {
-  //     const cartButton = document.querySelector('.cart-button')
-  //     cartButton.style.display = 'flex'
-  //   } else {
-  //     const cartButton = document.querySelector('.cart-button')
-  //     cartButton.style.display = 'none'
-  //   }
-  // }, [items])
-
-
-  // // change the quantity of the items in the cart
-  // const handleItemQuantity = (p) => {
-  //   if (p.type === '-') {
-  //     setItems(items.map(item => {
-  //       if (item.name === p.name) {
-  //         return { ...item, quantity: item.quantity - 1 }
-  //       } else {
-  //         return item
-  //       }
-  //     }))
-  //     console.log(items)
-  //   } else {
-  //     setItems(items.map(item => {
-  //       if (item.name === p.name) {
-  //         return { ...item, quantity: item.quantity + 1 }
-  //       } else {
-  //         return item
-  //       }
-  //     }))
-  //   }
-  // }
-
-  // // remove all items from the cart
-  // const removeAll = () => {
-  //   setItems([])
-  // }
-
-  // // render the image conditionaly
-  // const imgRendering = (src) => {
-  //   switch (src) {
-  //     case 'XX99 MARK II':
-  //       return xx99mark2
-
-  //     case 'XX99 MARK I':
-  //       return xx99mark1
-
-  //     case 'ZX9 SPEAKER':
-  //       return zx9
-
-  //     case 'ZX7 SPEAKER':
-  //       return zx7
-
-  //     case 'XX59 HEADPHONES':
-  //       return xx59
-
-  //     case 'YX1':
-  //       return yx1
-  //   }
-  // }
-
-  // const displayCart = () => {
-  //   if (cartDisplay === false) {
-  //     setCartDisplay(true)
-  //   } else {
-  //     setCartDisplay(false)
-  //   }
-  // }
-
-  // const handleCartClick = () => {
-  //   window.scrollTo(0, 0)
-  //   displayCart()
-  // }
-
   return (
     <div className="App">
       <HashRouter>
 
-        {/* {cartDisplay &&
-          <>
-            <div className='cart-container'>
-              <div className="title">
-                <p>Cart ({items.length})</p>
-                <p className='gray-text' onClick={() => removeAll()}>Remove all</p>
-              </div>
-              {items.map((item) => {
-                return (
-                  <div className='cart-item-container' key={item.price}>
-                    <img src={imgRendering(item.name)} alt="" />
-                    <div className='cart-items-price'>
-                      <p className='name'>{item.name}</p>
-                      <p className='price'>$ {item.price}</p>
-                    </div>
-                    <div className='cart-items-quantity'>
-                      <p onClick={() => handleItemQuantity({ name: item.name, type: '-' })} className='quantityManagement'>-</p>
-                      <p>{item.quantity}</p>
-                      <p onClick={() => handleItemQuantity({ name: item.name, type: '+' })} className='quantityManagement'>+</p>
-                    </div>
-                  </div>
-                )
-              })
-              }
-              {items.length === 0 ? (
-                <div>
-                  <p>Looks like you havent add any item to the cart yet :( </p>
-                  <p onClick={displayCart} className='back'>Back</p>
-                </div>
-              ) : (
-                <div>
-                  <div className='cart-total'>
-                    <p className='text'>total</p>
-                    <p className='total-price'>$ {totalPrice}</p>
-                  </div>
-                  <button onClick={displayCart} className='btn-1'><Link to='/checkout'>Checkout</Link></button>
-                  <p onClick={displayCart} className='back'>Back</p>
-                </div>
-              )}
-            </div>
-            <div className='filter'></div>
-          </>
-        } */}
         <Navbar />
-        
         <ToastContainer autoClose={2000} />
+
         <Routes>
           <Route path='/' element={<Home />} />
           <Route path='/headphones' element={<Headphones />} />
@@ -184,6 +50,7 @@ function App() {
           <Route path='/earphones/id:alskdnase324a' element={<Yx1 />} />
           {/* <Route path='/checkout' element={<Checkout totalPrice={totalPrice} items={items} removeAll={removeAll} />} /> */}
         </Routes>
+        
         <Footer />
       </HashRouter>
     </div>
