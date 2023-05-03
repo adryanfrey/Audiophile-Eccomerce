@@ -18,11 +18,13 @@ import { toast } from 'react-toastify'
 
 // store
 import store from '../../store/index'
+import { useSnapshot } from 'valtio'
 
 const Zx7 = () => {
 
     // states
     const [quantity, setQuantity] = useState(0)
+    const snap = useSnapshot(store)
 
     const handleQuantity = (p) => {
 
@@ -45,7 +47,27 @@ const Zx7 = () => {
     // add item to the cart
     const addItem = () => {
         const product = { name: 'ZX7 SPEAKER', price: 3500, quantity: quantity }
-        store.items.push(product)
+
+        if (quantity === 0) {
+            toast.warn('Select a quantity')
+            return
+        }
+
+        // check if product is alreay in the cart
+        const checkProduct = snap.items.find((item) => item.name === product.name)
+
+        if (checkProduct){
+            store.items = snap.items.map((item) => {
+                if (item.name === product.name){
+                    return {...item, quantity: quantity + item.quantity}
+                } else {
+                    return {...item}
+                }
+            })
+        } else {
+            store.items.push(product)
+        }
+
         toast.success('Item added to the cart')
         setQuantity(0)
     }
@@ -56,7 +78,7 @@ const Zx7 = () => {
             <div className='go-back'><Link className='body' to='/speakers'>Go Back</Link></div>
             <section className='product'>
                 <div className='product-zx7'>
-                    
+
                 </div>
                 <div className='product-text'>
                     <h2>ZX7 <br></br>SPEAKER </h2>
@@ -188,7 +210,7 @@ const Zx7 = () => {
                         Audiophile the <br></br> best place to buy your portable audio equipment.</p>
                 </div>
                 <div className='group4-img'>
-                    
+
                 </div>
             </section>
 

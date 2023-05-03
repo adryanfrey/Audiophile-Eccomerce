@@ -43,10 +43,10 @@ const Checkout = () => {
     const [zipcode, setZipcode] = useState('')
     const [city, setCity] = useState('')
     const [country, setCountry] = useState('')
-
-    const [error, setError] = useState(false)
     const [eMoneyInput, seteMoneyInput] = useState(undefined)
     const [cashInput, setCashInput] = useState(undefined)
+
+    const [error, setError] = useState(false)
 
     const navigate = useNavigate('')
 
@@ -91,7 +91,6 @@ const Checkout = () => {
         window.scrollTo(0, 0)
         setDisplaySuccess(true)
     }
-
 
     // getting the radio inputs reference
     useEffect(() => {
@@ -227,7 +226,7 @@ const Checkout = () => {
                     <button onClick={handlePayment} className='btn-1'>continue & pay</button>
                 </div>
             </div>
-            
+
             {displaySuccess &&
                 <>
                     <div className='payment-success'>

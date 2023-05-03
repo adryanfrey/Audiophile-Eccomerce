@@ -18,11 +18,13 @@ import { toast } from 'react-toastify'
 
 // store
 import store from '../../store/index'
+import { useSnapshot } from 'valtio'
 
 const Yx1 = () => {
 
     // states
     const [quantity, setQuantity] = useState(0)
+    const snap = useSnapshot(store)
 
     const handleQuantity = (p) => {
 
@@ -45,7 +47,27 @@ const Yx1 = () => {
     // add item to the cart
     const addItem = () => {
         const product = { name: 'YX1', price: 599, quantity: quantity }
-        store.items.push(product)
+
+        if (quantity === 0) {
+            toast.warn('Select a quantity')
+            return
+        }
+
+        // check if product is alreay in the cart
+        const checkProduct = snap.items.find((item) => item.name === product.name)
+
+        if (checkProduct){
+            store.items = snap.items.map((item) => {
+                if (item.name === product.name){
+                    return {...item, quantity: quantity + item.quantity}
+                } else {
+                    return {...item}
+                }
+            })
+        } else {
+            store.items.push(product)
+        }
+        
         toast.success('Item added to the cart')
         setQuantity(0)
     }

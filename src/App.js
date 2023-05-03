@@ -33,7 +33,6 @@ function App() {
   return (
     <div className="App">
       <HashRouter>
-
         <Navbar />
         <ToastContainer autoClose={2000} />
 
