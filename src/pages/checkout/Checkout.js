@@ -17,14 +17,25 @@ import xx59 from '../../assets/Group2.png'
 import yx1 from '../../assets/Group7.png'
 import success from '../../assets/success.png'
 
+// store
+import store from '../../store'
+import { useSnapshot } from 'valtio'
 
-const Checkout = ({ totalPrice, items, removeAll }) => {
+
+const Checkout = () => {
+    const snap = useSnapshot(store)
+
+    // sums the prices of all products
+    let totalPrice = 0
+    snap.items.forEach((item) => {
+        const total = item.price * item.quantity
+        totalPrice += total
+    })
+
     const vat = Math.round(totalPrice * 0.2)
     const grandTotal = totalPrice + 50
 
-    console.log(items)
-
-    // states
+    // inputs states
     const [name, setName] = useState('')
     const [email, setEmail] = useState('')
     const [phoneNumber, setPhoneNumber] = useState('')
@@ -40,7 +51,6 @@ const Checkout = ({ totalPrice, items, removeAll }) => {
     const navigate = useNavigate('')
 
     const [displaySuccess, setDisplaySuccess] = useState(false)
-
 
     // render the image conditionaly
     const imgRendering = (src) => {
@@ -78,7 +88,7 @@ const Checkout = ({ totalPrice, items, removeAll }) => {
             toast.warn('Select a payment method')
             return
         }
-        window.scrollTo(0,0)
+        window.scrollTo(0, 0)
         setDisplaySuccess(true)
     }
 
@@ -95,38 +105,19 @@ const Checkout = ({ totalPrice, items, removeAll }) => {
 
     // payment success button 
     const paymentSuccess = () => {
-        removeAll()
-        window.scrollTo(0,0)
+        store.items = []
+        window.scrollTo(0, 0)
         setDisplaySuccess(false)
         navigate('/')
-        
+
     }
 
-    // when payment is succesfull
+    // check if items is empty to redirect the user to other page
     useEffect(() => {
-        const successContainer = document.querySelector('.payment-success')
-        const filter = document.querySelector('.filterCheckout')
-
-        if (displaySuccess === true) {
-            successContainer.style.display = 'block'
-            filter.style.display = 'block'
-        } 
-
-    }, [displaySuccess])
-
-    // check if array is empty
-    useEffect(() => {
-        const checkArray = () => {
-            if (items.length === 0) {
-                navigate('/')
-            }
+        if (snap.items.length === 0) {
+            navigate('/')
         }
-        checkArray()
-    }, [items])
-
-    if (items.length === 0) {
-        return
-    }
+    }, [snap.items])
 
     return (
         <div className='checkout'>
@@ -197,7 +188,7 @@ const Checkout = ({ totalPrice, items, removeAll }) => {
                 <div className='container2'>
                     <h6>summary</h6>
 
-                    {items.map((item) => {
+                    {snap.items.map((item) => {
                         return (
                             <div className='cart-item-container' key={item.price}>
                                 <img src={imgRendering(item.name)} alt="" />
@@ -219,7 +210,7 @@ const Checkout = ({ totalPrice, items, removeAll }) => {
                     </div>
 
                     <div className='price'>
-                        <p>shippign</p>
+                        <p>shipping</p>
                         <span>$ 50</span>
                     </div>
 
@@ -236,36 +227,41 @@ const Checkout = ({ totalPrice, items, removeAll }) => {
                     <button onClick={handlePayment} className='btn-1'>continue & pay</button>
                 </div>
             </div>
-            <div className='payment-success'>
-                <img src={success} alt="" />
-                <h4>thank you for your order</h4>
-                <p className='body margin'>You will receive an email confirmation shortly</p>
-                <div className='items-container'>
-                    <div className='items'>
-                        <div className='items-info' key={items[0].price}>
-                            <img src={imgRendering(items[0].name)} alt="" />
-                            <div className='cart-items-price'>
-                                <p className='body name'>{items[0].name}</p>
-                                <p className='body price'>$ {items[0].price}</p>
+            
+            {displaySuccess &&
+                <>
+                    <div className='payment-success'>
+                        <img src={success} alt="" />
+                        <h4>thank you for your order</h4>
+                        <p className='body margin'>You will receive an email confirmation shortly</p>
+                        <div className='items-container'>
+                            <div className='items'>
+                                <div className='items-info'>
+                                    <img src={imgRendering(snap.items[0]?.name)} alt="" />
+                                    <div className='cart-items-price'>
+                                        <p className='body name'>{snap.items[0]?.name}</p>
+                                        <p className='body price'>$ {snap.items[0]?.price}</p>
+                                    </div>
+                                    <div className='cart-items-quantity'>
+                                        <p className='body'>{snap.items[0]?.quantity}x</p>
+                                    </div>
+                                </div>
+                                {snap.items.length > 1 &&
+                                    <div className='other-items'>
+                                        <p className='body'>and {snap.items.length - 1} other item(s)</p>
+                                    </div>
+                                }
                             </div>
-                            <div className='cart-items-quantity'>
-                                <p className='body'>{items[0].quantity}x</p>
+                            <div className='grand-total'>
+                                <p className='body'>Grand total</p>
+                                <span className='body'>$ {grandTotal}</span>
                             </div>
                         </div>
-                        {items.length > 1 &&
-                            <div className='other-items'>
-                                <p className='body'>and {items.length - 1} other item(s)</p>
-                            </div>
-                        }
+                        <button onClick={() => paymentSuccess()} className='btn-1'>Back to home</button>
                     </div>
-                    <div className='grand-total'>
-                        <p className='body'>Grand total</p>
-                        <span className='body'>$ {grandTotal}</span>
-                    </div>
-                </div>
-                <button onClick={() => paymentSuccess()} className='btn-1'>Back to home</button>
-            </div>
-            <div className='filterCheckout'>oi</div>
+                    <div className='filterCheckout'></div>
+                </>
+            }
         </div>
     )
 }

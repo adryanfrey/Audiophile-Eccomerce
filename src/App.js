@@ -10,7 +10,7 @@ import './sassStyles/global.sass'
 import './sassStyles/typography.sass'
 
 // toastify
-import { ToastContainer, toast } from 'react-toastify';
+import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 // pages
@@ -48,7 +48,7 @@ function App() {
           <Route path='/speakers/id:yubdwudasas3' element={<Zx9 />} />
           <Route path='/speakers/id:gusajhdascsa56' element={<Zx7 />} />
           <Route path='/earphones/id:alskdnase324a' element={<Yx1 />} />
-          {/* <Route path='/checkout' element={<Checkout totalPrice={totalPrice} items={items} removeAll={removeAll} />} /> */}
+          <Route path='/checkout' element={<Checkout />} />
         </Routes>
         
         <Footer />

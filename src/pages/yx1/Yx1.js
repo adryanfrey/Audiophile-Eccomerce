@@ -14,6 +14,7 @@ import chevron from '../../assets/home/desktop/chevron.png'
 // hooks
 import { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
+import { toast } from 'react-toastify'
 
 // store
 import store from '../../store/index'
@@ -45,6 +46,8 @@ const Yx1 = () => {
     const addItem = () => {
         const product = { name: 'YX1', price: 599, quantity: quantity }
         store.items.push(product)
+        toast.success('Item added to the cart')
+        setQuantity(0)
     }
     
     return (
