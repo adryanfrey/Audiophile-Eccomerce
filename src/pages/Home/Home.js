@@ -3,9 +3,9 @@ import './home.sass'
 
 // assets
 import img2 from '../../assets/home/desktop/image-earphones-yx1.jpg'
-import img5 from '../../assets/home/desktop/image-removebg-preview(38).png'
-import img6 from '../../assets/home/desktop/earphones.png'
-import img7 from '../../assets/home/desktop/image-removebg-preview(41).png'
+import speakersNav from '../../assets/home/desktop/image-removebg-preview(38).png'
+import earphonesNav from '../../assets/earphonesNav.png'
+import headphonesNav from '../../assets/home/desktop/image-removebg-preview(41).png'
 import chevron from '../../assets/home/desktop/chevron.png'
 
 
@@ -42,21 +42,21 @@ const Home = () => {
       <section className='home-section'>
         <div className='cards-container'>
           <div onClick={() => handleClick('headphones')} className='card1-container'>
-            <img src={img7} alt="" />
+            <img src={headphonesNav} alt="" />
             <div className='box-shadow'></div>
             <h6>headphones</h6>
             <button className='btn-3' >SHOP <img src={chevron} alt="chevron" /></button>
           </div>
 
           <div onClick={() => handleClick('speakers')} className='card1-container'>
-            <img src={img5} alt="" />
+            <img src={speakersNav} alt="" />
             <div className='box-shadow'></div>
             <h6>speakers</h6>
             <button className='btn-3'>SHOP <img src={chevron} alt="chevron" />  </button>
           </div>
 
           <div onClick={() => handleClick('earphones')} className='card1-container'>
-            <img src={img6} alt="" />
+            <img src={earphonesNav} alt="" />
             <div className='box-shadow'></div>
             <h6>earphones</h6>
             <button className='btn-3'>SHOP <img src={chevron} alt="chevron" /> </button>
@@ -65,7 +65,7 @@ const Home = () => {
 
         <div className='group1'>
           <div className='group1-container'>
-            <img src={img5} alt="" />
+            <img src={speakersNav} alt="" />
             <div className='circle1'></div>
             <div className='circle2'></div>
             <div className='circle3'></div>

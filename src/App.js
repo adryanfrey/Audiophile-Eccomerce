@@ -25,6 +25,7 @@ import Zx9 from './pages/zx9/Zx9';
 import Zx7 from './pages/zx7/Zx7';
 import Yx1 from './pages/yx1/Yx1';
 import Checkout from './pages/checkout/Checkout';
+import ProductPage from './pages/ProductPage/ProductPage';
 
 function App() {
 
@@ -37,8 +38,9 @@ function App() {
         <Routes>
           <Route path='/' element={<Home />} />
           <Route path='/headphones' element={<Headphones />} />
-          <Route path='speakers' element={<Speakers />} />
-          <Route path='earphones' element={<Earphones />} />
+          <Route path='/speakers' element={<Speakers />} />
+          <Route path='/earphones' element={<Earphones />} />
+          <Route path='/product/:id' element={<ProductPage />}/>
           <Route path='/headphones/id:jbgy342ewgh2' element={<Xx99mark2 />} />
           <Route path='/headphones/id:lkjnuwedsas1' element={<Xx99mark1 />} />
           <Route path='/headphones/id:oiwedhsnas34' element={<Xx59 />} />
@@ -47,7 +49,7 @@ function App() {
           <Route path='/earphones/id:alskdnase324a' element={<Yx1 />} />
           <Route path='/checkout' element={<Checkout />} />
         </Routes>
-        
+
         <Footer />
       </HashRouter>
     </div>
