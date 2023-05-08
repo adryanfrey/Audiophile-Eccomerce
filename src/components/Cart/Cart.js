@@ -115,7 +115,7 @@ const Cart = ({closeCart}) => {
                 }
                 {snap.items.length === 0 ? (
                     <div>
-                        <p className='noItemText'>Looks like you havent add any item to the cart yet :( </p>
+                        <p className='noItemText'>Looks like you haven't added any item to the cart yet :( </p>
                         <p onClick={closeCart} className='back'>Back</p>
                     </div>
                 ) : (
