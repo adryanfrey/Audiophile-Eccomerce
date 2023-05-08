@@ -18,12 +18,6 @@ import Home from './pages/Home/Home'
 import Headphones from './pages/Headphones/Headphones';
 import Speakers from './pages/Speakers/Speakers';
 import Earphones from './pages/Earphones/Earphones';
-import Xx99mark2 from './pages/xx99mark2/Xx99mark2';
-import Xx99mark1 from './pages/xx99mark1/Xx99mark1';
-import Xx59 from './pages/xx59/Xx59';
-import Zx9 from './pages/zx9/Zx9';
-import Zx7 from './pages/zx7/Zx7';
-import Yx1 from './pages/yx1/Yx1';
 import Checkout from './pages/checkout/Checkout';
 import ProductPage from './pages/ProductPage/ProductPage';
 
@@ -41,12 +35,6 @@ function App() {
           <Route path='/speakers' element={<Speakers />} />
           <Route path='/earphones' element={<Earphones />} />
           <Route path='/product/:id' element={<ProductPage />}/>
-          <Route path='/headphones/id:jbgy342ewgh2' element={<Xx99mark2 />} />
-          <Route path='/headphones/id:lkjnuwedsas1' element={<Xx99mark1 />} />
-          <Route path='/headphones/id:oiwedhsnas34' element={<Xx59 />} />
-          <Route path='/speakers/id:yubdwudasas3' element={<Zx9 />} />
-          <Route path='/speakers/id:gusajhdascsa56' element={<Zx7 />} />
-          <Route path='/earphones/id:alskdnase324a' element={<Yx1 />} />
           <Route path='/checkout' element={<Checkout />} />
         </Routes>
 

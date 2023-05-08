@@ -8,7 +8,7 @@ import { useState } from 'react'
 
 // assets
 import img5 from '../../assets/home/desktop/image-removebg-preview(38).png'
-import img6 from '../../assets/home/desktop/earphones.png'
+import earphonesNav from '../../assets/earphonesNav.png'
 import img7 from '../../assets/home/desktop/image-removebg-preview(41).png'
 import chevron from '../../assets/home/desktop/chevron.png'
 
@@ -101,7 +101,7 @@ const Navbar = () => {
             </div>
 
             <div onClick={() => handleNavigation('earphones')} className='card1-container'>
-              <img src={img6} alt="" />
+              <img src={earphonesNav} alt="" />
               <div className='box-shadow'></div>
               <h6>earphones</h6>
               <button className='btn-3'>SHOP <img src={chevron} alt="chevron" /> </button>

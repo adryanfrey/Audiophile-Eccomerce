@@ -7,7 +7,7 @@ import img2 from '../../assets/Bitmap8.png'
 import img3 from '../../assets/Bitmap9.png'
 import img7 from '../../assets/home/desktop/image-removebg-preview(41).png'
 import img8 from '../../assets/home/desktop/image-removebg-preview(38).png'
-import img9 from '../../assets/home/desktop/earphones.png'
+import earphonesNav from '../../assets/earphonesNav.png'
 import chevron from '../../assets/home/desktop/chevron.png'
 
 // hooks
@@ -186,7 +186,7 @@ const ProductPage = () => {
                 </div>
 
                 <div onClick={() => handleNavigation('/earphones')} className='card1-container'>
-                    <img src={img9} alt="" />
+                    <img src={earphonesNav} alt="" />
                     <div className='box-shadow'></div>
                     <h6>earphones</h6>
                     <button className='btn-3'>SHOP <img src={chevron} alt="chevron" /> </button>
