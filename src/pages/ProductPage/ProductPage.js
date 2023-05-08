@@ -1,28 +1,22 @@
 // sass
 import './productPage.sass'
 
-// assets
-import img1 from '../../assets/Bitmap7.png'
-import img2 from '../../assets/Bitmap8.png'
-import img3 from '../../assets/Bitmap9.png'
-import img7 from '../../assets/home/desktop/image-removebg-preview(41).png'
-import img8 from '../../assets/home/desktop/image-removebg-preview(38).png'
-import earphonesNav from '../../assets/earphonesNav.png'
-import chevron from '../../assets/home/desktop/chevron.png'
-
 // hooks
 import { useState } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
+import { Link, useNavigate, useParams } from 'react-router-dom'
 import { toast } from 'react-toastify'
 
 // store
 import store from '../../store/index'
 import { useSnapshot } from 'valtio'
+import { products } from './data'
 
 const ProductPage = () => {
     // states
     const [quantity, setQuantity] = useState(0)
     const snap = useSnapshot(store)
+    const { id } = useParams()
+    const product = products[id]
 
     const handleQuantity = (p) => {
         if (p === '-') {
@@ -43,7 +37,7 @@ const ProductPage = () => {
 
     // add item to the cart
     const addItem = () => {
-        const product = { name: 'XX59 HEADPHONES', price: 899, quantity: quantity}
+        const object = { name: product.id, price: product.price, quantity: quantity }
 
         if (quantity === 0) {
             toast.warn('Select a quantity')
@@ -51,18 +45,18 @@ const ProductPage = () => {
         }
 
         // check if product is alreay in the cart
-        const checkProduct = snap.items.find((item) => item.name === product.name)
+        const checkProduct = snap.items.find((item) => item.name === object.name)
 
-        if (checkProduct){
+        if (checkProduct) {
             store.items = snap.items.map((item) => {
-                if (item.name === product.name){
-                    return {...item, quantity: quantity + item.quantity}
+                if (item.name === object.name) {
+                    return { ...item, quantity: quantity + item.quantity }
                 } else {
-                    return {...item}
+                    return { ...item }
                 }
             })
         } else {
-            store.items.push(product)
+            store.items.push(object)
         }
 
         toast.success('Item added to the cart')
@@ -74,16 +68,15 @@ const ProductPage = () => {
             <div className='black-bg'></div>
             <div className='go-back'><Link className='body' to='/headphones'>Go Back</Link></div>
             <section className='product'>
-                <div className='product-xx59'>
-                    
-                </div>
+
+                <div className={`product-img-${product.id}`} />
+
                 <div className='product-text'>
-                    <h2>XX59 <br></br>Headphones </h2>
+                    <h2>{product.name}</h2>
                     <p className='body'>
-                        Enjoy your audio almost anywhere and customize it to your specific tastes with the XX59 headphones.
-                        The stylish yet durable versatile wireless headset is a brilliant companion at home or on the move.
+                        {product.description}
                     </p>
-                    <p className='body price'>$ 899</p>
+                    <p className='body price'>$ {product.price}</p>
                     <div>
                         <div className='quantity'>
                             <p className='body symbols' onClick={() => handleQuantity('-')}>-</p>
@@ -98,98 +91,51 @@ const ProductPage = () => {
                 <div className='features-text'>
                     <h3>features</h3>
                     <p className='body'>
-                        These headphones have been created from durable, high-quality materials tough enough to take anywhere.
-                        Its compact folding design fuses comfort and minimalist style making it perfect for travel. Flawless transmission is
-                        assured by the latest wireless technology engineered for audio synchronization with videos.
+                        {product.features1}
                     </p>
                     <p className='body'>
-                        More than a simple pair of headphones, this headset features a pair of built-in microphones for clear,
-                        hands-free calling when paired with a compatible smartphone. Controlling music and calls is also intuitive thanks
-                        to easy-access touch buttons on the earcups. Regardless of how you use the XX59 headphones, you can do so all day thanks
-                        to an impressive 30-hour battery life that can be rapidly recharged via USB-C.
+                        {product.features2}
                     </p>
                 </div>
                 <div className='features-box'>
                     <h3>in the box</h3>
-                    <p className='body'>
-                        <span>1x</span>
-                        Headphone Unit
-                    </p>
-
-                    <p className='body'>
-                        <span>2x</span>
-                        Replacement Earcups
-                    </p>
-
-                    <p className='body'>
-                        <span>1x</span>
-                        User Manual
-                    </p>
-
-                    <p className='body'>
-                        <span>1x</span>
-                        3.5mm 5m Audio Cable
-                    </p>
+                    {product.inTheBox.map((item) => {
+                        return (
+                            <p key={item.item} className='body'>
+                                <span>{item.qty}</span>
+                                {item.item}
+                            </p>
+                        )
+                    })}
                 </div>
             </section>
 
             <section className='images'>
                 <div className='images-container1'>
                     <div className='images-container1-img1'>
-                        <img src={img1} alt="" />
+                        <img src={product.productImages[0]} alt="product demo" />
                     </div>
                     <div className='images-container1-img2'>
-                        <img src={img2} alt="" />
+                        <img src={product.productImages[1]} alt="product demo" />
                     </div>
                 </div>
                 <div className='images-container2'>
-                    <img src={img3} alt="" />
+                    <img src={product.productImages[2]} alt="product demo" />
                 </div>
             </section>
 
             <section className='other-products'>
                 <h3>You may also like</h3>
                 <div className='imgs-container'>
-                    <div className='other-products-card'>
-                        <div className="mark2-img"></div>
-                        <h4>XX99 MARK II</h4>
-                        <button onClick={() => handleNavigation('/headphones/id:jbgy342ewgh2')} className='btn-1'>see product</button>
-                    </div>
-
-                    <div className='other-products-card'>
-                        <div className="mark1-img"></div>
-                        <h4>XX99 MARK I</h4>
-                        <button onClick={() => handleNavigation('/headphones/id:lkjnuwedsas1')} className='btn-1'>see product</button>
-                    </div>
-
-                    <div className='other-products-card'>
-                        <div className="zx9-img"></div>
-                        <h4>zx9 speaker</h4>
-                        <button onClick={() => handleNavigation('/speakers/id:yubdwudasas3')} className='btn-1'>see product</button>
-                    </div>
-                </div>
-            </section>
-
-            <section className='cards-container'>
-                <div onClick={() => handleNavigation('/headphones')} className='card1-container'>
-                    <img src={img7} alt="" />
-                    <div className='box-shadow'></div>
-                    <h6>headphones</h6>
-                    <button className='btn-3'>SHOP <img src={chevron} alt="chevron" /> </button>
-                </div>
-
-                <div onClick={() => handleNavigation('/speakers')} className='card1-container'>
-                    <img src={img8} alt="" />
-                    <div className='box-shadow'></div>
-                    <h6>speakers</h6>
-                    <button className='btn-3'>SHOP <img src={chevron} alt="chevron" />  </button>
-                </div>
-
-                <div onClick={() => handleNavigation('/earphones')} className='card1-container'>
-                    <img src={earphonesNav} alt="" />
-                    <div className='box-shadow'></div>
-                    <h6>earphones</h6>
-                    <button className='btn-3'>SHOP <img src={chevron} alt="chevron" /> </button>
+                    {product.recommendedProducts.map((item) => {
+                        return (
+                            <div key={item.name} className='other-products-card'>
+                                <img src={item.img} alt="product demo"/>
+                                <h4>{item.name}</h4>
+                                <button onClick={() => handleNavigation(`/product/${product.id}`)} className='btn-1'>see product</button>
+                            </div>
+                        )
+                    })}
                 </div>
             </section>
 
@@ -202,7 +148,6 @@ const ProductPage = () => {
                         Audiophile the <br></br> best place to buy your portable audio equipment.</p>
                 </div>
                 <div className='group4-img'>
-                    
                 </div>
             </section>
 

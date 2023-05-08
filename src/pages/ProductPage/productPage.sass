@@ -32,19 +32,83 @@
         @media(max-width: 760px) 
             flex-direction: column
 
-        @include mixins.productDetail
+        &-text
+            width: 55%
+            display: flex
+            flex-direction: column
+            justify-content: center
+            padding-left: 10%
+            @media(max-width: 760px)
+                width: 100%
+                text-align: start
+                padding: 0
+                margin-bottom: 5rem
+
+            .overline
+                color: variables.$orange-color
+                @media(max-width: 760px)
+                    margin-top: 2rem
+
+            h2
+                margin-top: 1rem
+                margin-bottom: 1.5rem
+                @media(max-width: 760px)
+                    margin: 2rem 0
+
+            .price
+                font-weight: bold
+                margin: 1.5rem 0
+
+            div
+                display: flex
+                align-items: center
+
+                button
+                    min-width: 100px
+                    margin-left: 1rem
+                    @media(max-width: 900px)
+                        font-size: .8rem
+
+                .quantity
+                    display: flex
+                    width: 150px
+                    min-width: 150px
+                    background-color: variables.$grey-dark
+                    height: 100%
+
+                    .number
+                        font-weight: bold
+
+                    .symbols
+                        color: rgba(0, 0, 0, 0.5)
+                        cursor: pointer
+                        transition: .4s
+                        &:active
+                            background-color: #dcdcdc
+                            color: rgba(0, 0, 0, 1)
+                            
+                    @media (hover:hover)
+                        .symbols:hover
+                            background-color: #dcdcdc
+                            color: rgba(0, 0, 0, 1)
+
+                    p
+                        width: 33%
+                        text-align: center
+                        height: 100%
+                        line-height: 55px
 
     .features
         width: 80%
         margin: 5vw auto
         display: flex
-        @include mixins.smallTablet
+        @media(max-width: 950px)
             flex-direction: column
 
         &-text
             width: 60%
             padding-right: 6vw
-            @include mixins.smallTablet
+            @media(max-width: 950px)
                 width: 100%
                 padding: 0
 
@@ -54,7 +118,7 @@
         &-box
             width: 40%
             padding-left: 2vw
-            @include mixins.smallTablet
+            @media(max-width: 950px)
                 width: 100%
                 padding: 0
                 display: flex
@@ -132,28 +196,118 @@
     .other-products
         width: 80%
         margin: 0 auto
-        margin-bottom: 15vw
-        @include mixins.otherProducts
-        @include mixins.mobile
-            margin-bottom: 10rem
-
-    .cards-container
-        display: flex
-        justify-content: space-between
-        width: 80%
-        margin: 0 auto
-        margin-top: 15rem
         margin-bottom: 10rem
-        @include mixins.mobile
-            flex-direction: column
-            margin-top: 5rem
-            margin-bottom: 3rem
+        @media(max-width: 650px)
+            margin-bottom: 15rem
+        h3
+            text-align: center
+            margin-bottom: 3vw
 
-        .card1-container
-            @include mixins.card1
+        .imgs-container
+            display: flex
+            width: 100%
+            gap: 2vw
+            @media (max-width: 760px)
+                flex-direction: column
+                gap: 5rem
+
+            .other-products-card
+                display: flex
+                flex-direction: column
+                width: 33%
+                gap: 2vw
+                align-items: center
+                @media (max-width: 760px)
+                    width: 100%
+
+                img
+                    width: 80%
 
     .group4
         width: 80%
         margin: 0 auto
         margin-bottom: 5vw
         @include mixins.card-final
+
+
+.product-img-xx59
+    width: 45%
+    background: url('../../assets/xx59/xx59.jpg') no-repeat center
+    background-size: cover
+    min-height: 500px
+    @media(max-width: 950px)
+        background: url('../../assets/xx59/xx59Tablet.png') no-repeat center
+        height: 60vw
+    @media(max-width: 760px)
+        background: url('../../assets/xx59/xx59.jpg') no-repeat center
+        width: 100%
+
+.product-img-xx99mark2
+    width: 45%
+    background: url('../../assets/xx99mark2/xx99mark2.jpg') no-repeat center
+    background-size: cover
+    min-height: 500px
+    @media(max-width: 950px)
+        background: url('../../assets/xx99mark2/mark2Tablet.png') no-repeat center
+        background-size: cover
+        height: 60vw
+    @media(max-width: 760px)
+        background: url('../../assets/xx99mark2/xx99mark2.jpg') no-repeat center 
+        background-size: cover
+        width: 100%
+
+.product-img-xx99mark1
+    width: 45%
+    background: url('../../assets/xx99mark1/xx99mark1.jpg') no-repeat center
+    background-size: cover
+    min-height: 500px
+    @media(max-width: 950px)
+        background: url('../../assets/xx99mark1/mark1Tablet.png') no-repeat center
+        background-size: cover
+        height: 60vw
+    @media(max-width: 760px)
+        background: url('../../assets/xx99mark1/xx99mark1.jpg') no-repeat center
+        background-size: cover
+        width: 100%
+
+.product-img-zx7
+    width: 45%
+    background: url('../../assets/zx7/zx7.jpg') no-repeat center
+    background-size: cover
+    min-height: 500px
+    @media(max-width: 950px)
+        background: url('../../assets/zx7/zx7Tablet.png') no-repeat center
+        background-size: cover
+        height: 60vw
+    @media(max-width: 760px)
+        background: url('../../assets/zx7/zx7.jpg') no-repeat center
+        background-size: cover
+        width: 100%
+
+.product-img-zx9
+    width: 45%
+    background: url('../../assets/zx9/zx9.jpg') no-repeat center
+    background-size: cover
+    min-height: 500px
+    @media(max-width: 950px)
+        background: url('../../assets/zx9/zx9Tablet.png') no-repeat center
+        background-size: cover
+        height: 60vw
+    @media(max-width: 760px)
+        background: url('../../assets/zx9/zx9.jpg') no-repeat center
+        background-size: cover
+        width: 100%
+
+.product-img-yx1
+    width: 45%
+    background: url('../../assets/yx1/yx1.jpg') no-repeat center
+    background-size: cover
+    min-height: 500px
+    @media(max-width: 950px)
+        background: url('../../assets/yx1/yx1Tablet.png') no-repeat 
+        background-size: cover
+        height: 60vw
+    @media(max-width: 760px)
+        background: url('../../assets/yx1/yx1.jpg') no-repeat center
+        background-size: cover
+        width: 100%

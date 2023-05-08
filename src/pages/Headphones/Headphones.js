@@ -2,9 +2,9 @@
 import './headphones.sass'
 
 // assets
-import img7 from '../../assets/home/desktop/image-removebg-preview(41).png'
-import chevron from '../../assets/home/desktop/chevron.png'
-import img5 from '../../assets/home/desktop/image-removebg-preview(38).png'
+import headphonesNav from '../../assets/headphonesNav.png'
+import chevron from '../../assets/chevron.png'
+import speakersNav from '../../assets/speakersNav.png'
 import earphonesNav from '../../assets/earphonesNav.png'
 
 // hooks
@@ -69,14 +69,14 @@ const Headphones = () => {
 
             <section className='cards-container'>
                 <div onClick={() => handleClick('/headphones')} className='card1-container'>
-                    <img src={img7} alt="" />
+                    <img src={headphonesNav} alt="" />
                     <div className='box-shadow'></div>
                     <h6>headphones</h6>
                     <button className='btn-3'>SHOP <img src={chevron} alt="chevron" /> </button>
                 </div>
 
                 <div onClick={() => handleClick('/speakers')} className='card1-container'>
-                    <img src={img5} alt="" />
+                    <img src={speakersNav} alt="" />
                     <div className='box-shadow'></div>
                     <h6>speakers</h6>
                     <button className='btn-3'>SHOP <img src={chevron} alt="chevron" />  </button>

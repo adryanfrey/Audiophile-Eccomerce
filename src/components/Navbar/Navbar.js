@@ -7,10 +7,10 @@ import { useNavigate } from 'react-router-dom'
 import { useState } from 'react'
 
 // assets
-import img5 from '../../assets/home/desktop/image-removebg-preview(38).png'
+import speakersNav from '../../assets/speakersNav.png'
 import earphonesNav from '../../assets/earphonesNav.png'
-import img7 from '../../assets/home/desktop/image-removebg-preview(41).png'
-import chevron from '../../assets/home/desktop/chevron.png'
+import headphonesNav from '../../assets/headphonesNav.png'
+import chevron from '../../assets/chevron.png'
 
 // components
 import Cart from '../Cart/Cart'
@@ -87,14 +87,14 @@ const Navbar = () => {
         <>
           <div className='navbar-tablet'>
             <div onClick={() => handleNavigation('headphones')} className='card1-container'>
-              <img src={img7} alt="" />
+              <img src={headphonesNav} alt="" />
               <div className='box-shadow'></div>
               <h6>headphones</h6>
               <button className='btn-3' >SHOP <img src={chevron} alt="chevron" /></button>
             </div>
 
             <div onClick={() => handleNavigation('speakers')} className='card1-container'>
-              <img src={img5} alt="" />
+              <img src={speakersNav} alt="" />
               <div className='box-shadow'></div>
               <h6>speakers</h6>
               <button className='btn-3'>SHOP <img src={chevron} alt="chevron" />  </button>

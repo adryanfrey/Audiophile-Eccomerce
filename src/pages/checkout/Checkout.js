@@ -9,12 +9,12 @@ import { useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify'
 
 // assets
-import xx99mark2 from '../../assets/Group15.png'
-import xx99mark1 from '../../assets/Group3.png'
-import zx9 from '../../assets/Group5.png'
-import zx7 from '../../assets/Group8.png'
-import xx59 from '../../assets/Group2.png'
-import yx1 from '../../assets/Group7.png'
+import xx99mark2 from '../../assets/cart/image-xx99-mark-two-headphones.jpg'
+import xx99mark1 from '../../assets/cart/image-xx99-mark-one-headphones.jpg'
+import zx9 from '../../assets/cart/image-zx9-speaker.jpg'
+import zx7 from '../../assets/cart/image-zx7-speaker.jpg'
+import xx59 from '../../assets/cart/image-xx59-headphones.jpg'
+import yx1 from '../../assets/cart/image-yx1-earphones.jpg'
 import success from '../../assets/success.png'
 
 // store
@@ -51,22 +51,22 @@ const Checkout = () => {
     // render the image conditionaly
     const imgRendering = (src) => {
         switch (src) {
-            case 'XX99 MARK II':
+            case 'xx99mark2':
                 return xx99mark2
 
-            case 'XX99 MARK I':
+            case 'xx99mark1':
                 return xx99mark1
 
-            case 'ZX9 SPEAKER':
+            case 'zx9':
                 return zx9
 
-            case 'ZX7 SPEAKER':
+            case 'zx7':
                 return zx7
 
-            case 'XX59 HEADPHONES':
+            case 'xx59':
                 return xx59
 
-            case 'YX1':
+            case 'yx1':
                 return yx1
         }
     }

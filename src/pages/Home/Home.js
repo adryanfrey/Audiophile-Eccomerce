@@ -2,12 +2,11 @@
 import './home.sass'
 
 // assets
-import img2 from '../../assets/home/desktop/image-earphones-yx1.jpg'
-import speakersNav from '../../assets/home/desktop/image-removebg-preview(38).png'
+import yx1Home from '../../assets/home/yx1Home.jpg'
+import speakersNav from '../../assets/speakersNav.png'
 import earphonesNav from '../../assets/earphonesNav.png'
-import headphonesNav from '../../assets/home/desktop/image-removebg-preview(41).png'
-import chevron from '../../assets/home/desktop/chevron.png'
-
+import headphonesNav from '../../assets/headphonesNav.png'
+import chevron from '../../assets/chevron.png'
 
 // hooks
 import { useNavigate } from 'react-router-dom'
@@ -86,7 +85,7 @@ const Home = () => {
 
         <div className="group3">
           <div className='group3-container'>
-            <img src={img2} alt="" />
+            <img src={yx1Home} alt="" />
           </div>
           <div className='group3-container gray-bg'>
             <h3>yx1 earphones</h3>
