@@ -36,7 +36,7 @@ const Headphones = () => {
                         It redefines your premium headphone experience by reproducing the balanced depth and
                         precision of studio-quality sound.
                     </p>
-                    <button onClick={() => handleClick('/headphones/id:jbgy342ewgh2')} className='btn-1'>see product</button>
+                    <button onClick={() => handleClick('/product/xx99mark2')} className='btn-1'>see product</button>
                 </div>
             </section>
 
@@ -46,7 +46,7 @@ const Headphones = () => {
                     <p className='body'>As the gold standard for headphones, the classic XX99 Mark I offers detailed and
                         accurate audio reproduction for audiophiles, mixing engineers, and music aficionados alike in studios and on the go.
                     </p>
-                    <button onClick={() => handleClick('/headphones/id:lkjnuwedsas1')} className='btn-1'>see product</button>
+                    <button onClick={() => handleClick('/product/xx99mark1')} className='btn-1'>see product</button>
                 </div>
                 <div className='mark1-img'>
                     
@@ -63,7 +63,7 @@ const Headphones = () => {
                         Enjoy your audio almost anywhere and customize it to your specific tastes with the XX59 headphones.
                         The stylish yet durable versatile wireless headset is a brilliant companion at home or on the move.
                     </p>
-                    <button onClick={() => handleClick('/headphones/id:oiwedhsnas34')} className='btn-1'>see product</button>
+                    <button onClick={() => handleClick('/product/xx59')} className='btn-1'>see product</button>
                 </div>
             </section>
 

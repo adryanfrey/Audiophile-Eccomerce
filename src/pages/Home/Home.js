@@ -34,7 +34,7 @@ const Home = () => {
           <p className='overline'>NEW PRODUCT</p>
           <h1>XX99 Mark II <br></br> Headphones</h1>
           <p className="body">Experience natural, lifelike audio and exceptional build quality made for the passionate music enthusiast.</p>
-          <button className='btn-1' onClick={() => handleClick('/headphones/id:jbgy342ewgh2')}>See Product</button>
+          <button className='btn-1' onClick={() => handleClick('/product/xx99mark2')}>See Product</button>
         </div>
       </main>
 
@@ -73,14 +73,14 @@ const Home = () => {
             <div className='group1-container-text'>
               <h1>ZX9 <br></br> speaker</h1>
               <p className='body'>Upgrade to premium speakers that are phenomenally built to deliver truly remarkable sound.</p>
-              <button onClick={() => handleClick('/speakers/id:yubdwudasas3')} className='btn-2'>see product</button>
+              <button onClick={() => handleClick('/product/zx9')} className='btn-2'>see product</button>
             </div>
           </div>
         </div>
 
         <div className="group2">
           <h3>ZX7 Speaker</h3>
-          <button onClick={() => handleClick('/speakers/id:gusajhdascsa56')} className='btn-2'>see product</button>
+          <button onClick={() => handleClick('/product/zx7')} className='btn-2'>see product</button>
         </div>
 
         <div className="group3">
@@ -89,7 +89,7 @@ const Home = () => {
           </div>
           <div className='group3-container gray-bg'>
             <h3>yx1 earphones</h3>
-            <button onClick={() => handleClick('/earphones/id:alskdnase324a')} className='btn-2'>see product</button>
+            <button onClick={() => handleClick('/product/yx1')} className='btn-2'>see product</button>
           </div>
         </div>
 

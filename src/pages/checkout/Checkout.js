@@ -21,7 +21,6 @@ import success from '../../assets/success.png'
 import store from '../../store'
 import { useSnapshot } from 'valtio'
 
-
 const Checkout = () => {
     const snap = useSnapshot(store)
 
@@ -48,7 +47,7 @@ const Checkout = () => {
 
     const navigate = useNavigate('')
 
-    // render the image conditionaly
+    // render image conditionaly
     const imgRendering = (src) => {
         switch (src) {
             case 'xx99mark2':
@@ -78,7 +77,6 @@ const Checkout = () => {
             setError(true)
             return
         }
-
 
         const eMoneyInput = document.querySelector('#e-money')
         const cashInput = document.querySelector('#cash')

@@ -38,7 +38,7 @@ const Speakers = () => {
                         It’s a bookshelf speaker system that offers truly wireless connectivity -- 
                         creating new possibilities for more pleasing and practical audio setups.
                     </p>
-                    <button onClick={() => handleClick('/speakers/id:yubdwudasas3')} className='btn-1'>see product</button>
+                    <button onClick={() => handleClick('/product/zx9')} className='btn-1'>see product</button>
                 </div>
             </section>
 
@@ -50,7 +50,7 @@ const Speakers = () => {
                         The ZX7 bookshelf speaker uses high-end audiophile components that 
                         represents the top of the line powered speakers for home or studio use.
                     </p>
-                    <button onClick={() => handleClick('/speakers/id:gusajhdascsa56')} className='btn-1'>see product</button>
+                    <button onClick={() => handleClick('/product/zx7')} className='btn-1'>see product</button>
                 </div>
                 <div className='zx7-img'>
                     

@@ -9,7 +9,7 @@ import { toast } from 'react-toastify'
 // store
 import store from '../../store/index'
 import { useSnapshot } from 'valtio'
-import { products } from './data'
+import { products } from '../../store/productsData'
 
 const ProductPage = () => {
     // states
@@ -66,7 +66,7 @@ const ProductPage = () => {
     return (
         <div className='productPage'>
             <div className='black-bg'></div>
-            <div className='go-back'><Link className='body' to='/headphones'>Go Back</Link></div>
+            <div className='go-back'><Link className='body' to={`/${product.category}`}>Go Back</Link></div>
             <section className='product'>
 
                 <div className={`product-img-${product.id}`} />
@@ -132,7 +132,7 @@ const ProductPage = () => {
                             <div key={item.name} className='other-products-card'>
                                 <img src={item.img} alt="product demo"/>
                                 <h4>{item.name}</h4>
-                                <button onClick={() => handleNavigation(`/product/${product.id}`)} className='btn-1'>see product</button>
+                                <button onClick={() => handleNavigation(`/product/${item.id}`)} className='btn-1'>see product</button>
                             </div>
                         )
                     })}
